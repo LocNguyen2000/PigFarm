@@ -12,6 +12,7 @@ var maxId = 1;
 
 table.showComponent = () => {
   renderTable1();
+
   // farm.renderFeedArea()
 };
 

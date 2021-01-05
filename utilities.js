@@ -1,9 +1,10 @@
 // others general functions
 
-// choose non-repeating number
+// choose random non-repeating id for pig => trough
 function randomNumber(min, max) {
   let number = Math.floor(Math.random() * (max - 0) + min);
   console.log("Random number: " + number);
+  // check if id of this pig exist in trough
   if (!existPig(number)) {
     return number;
   } else if (isFull()) {
@@ -11,6 +12,7 @@ function randomNumber(min, max) {
   }
   return randomNumber(min, max);
 }
+// check if trough is full or all pig is in trough
 function isFull() {
   let troughUsed = 0;
   troughList.map((t) => {
@@ -22,10 +24,7 @@ function isFull() {
   }
   return true;
 }
-function searchID(arr, id) {
-  
-}
-
+// check if exist pig with id in trough
 function existPig(pigID) {
   for (let t of troughList) {
     if (t.pigID == pigID) {

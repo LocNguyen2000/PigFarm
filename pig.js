@@ -6,7 +6,7 @@ class Pig {
     this.weight = 20;
     this.eaten = 0;
     this.cumulative = 0;
-    this.remain = Math.floor(Math.random() * (5 - 0) + 1);
+    this.remain = parseFloat(Math.floor(Math.random() * (5 - 0) + 1)).toFixed(1);
     this.eatingSpeed = 5;
     // state: 'eat, not-eat'
     this.state = 'not-eat'

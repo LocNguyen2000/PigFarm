@@ -13,17 +13,37 @@ body {
   flex-direction: row;
   margin: 20px;
 }
-#day{
+#day {
   font-size: 20px;
   margin-left: 20px;
 }
 /*-----------------------*/
 #farm {
+  display: block;
   width: 500px;
   height: 500px;
-  background: skyblue;
+  /* background: skyblue; */
   border: 10px solid brown;
+  
 }
+.row {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+.cell {
+  /* display: inline-block; */
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+.cell.feed {
+  /* display: inline-block; */
+  width: 100px;
+  height: 100px;
+}
+
+/*
 .pig {
   background: tomato;
   width: 15px;
@@ -34,15 +54,6 @@ body {
   align-items: center;
   justify-content: center;
   margin: 2px;
-}
-#feed-area {
-  position: fixed;
-  top: 320px;
-  left: 20px;
-  width: 300px;
-  height: 300px;
-  border: 10px solid brown;
-  background: cadetblue;
 }
 
 /*----------------*/
@@ -63,7 +74,7 @@ th {
   padding: 8px;
 }
 /*-----------*/
-input{
+input {
   width: 150px;
   height: 30px;
   margin-left: 10px;
@@ -82,4 +93,3 @@ input{
   margin-left: 10px;
   height: 50px;
 }
-

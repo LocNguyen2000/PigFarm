@@ -2,21 +2,28 @@ window.onload = init;
 
 function init() {
   table.showComponent();
+  farm.renderFarmArea()
 
   let date = document.getElementById("day");
   let addBtn = document.getElementById("add");
   let weighBtn = document.getElementById("weigh");
   let nextBtn = document.getElementById("next-day");
   let deleteBtn = document.getElementById("delete");
+  let resetBtn = document.getElementById('reset')
  
   date.innerHTML =  'Day '+ days;
   addBtn.onclick = addPig;
   weighBtn.onclick = weighPig;
   nextBtn.onclick = nextDay;
   deleteBtn.onclick = deletePig;
+  resetBtn.onclick = reset
 }
 
 // button events
+
+function reset() {
+    window.location.reload()
+}
 
 function weighPig() {
   if (pigList.length == "0") alert("No Pigs.");
