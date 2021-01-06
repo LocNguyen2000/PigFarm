@@ -31,8 +31,11 @@ function weighPig() {
     let rand = randomNumber(1, pigList.length);
     if (pigList[rand - 1].remain != 0 && !existPig(rand)) {
       pigList[rand - 1].eat();
+    
     }
+
   }
+
 }
 function nextDay() {
   let date = document.getElementById("day");
@@ -46,9 +49,10 @@ function nextDay() {
     // change value of all pigs in list
 
     for (let pig of pigList) {
+      pig.remain = parseFloat(Math.floor((Math.random() * (5 - 1) + 1))).toFixed(1);
+      pig.weight = parseFloat((pig.weight + pig.eaten*0.1).toFixed(1));
       pig.eaten = 0;
-      pig.remain = Math.floor(Math.random() * (5 - 1) + 1);
-      pig.weight = parseFloat((pig.weight + 0.1).toFixed(1));
+
     }
     days += 1;
     date.innerHTML = 'Day ' +  days;
@@ -57,6 +61,7 @@ function nextDay() {
   } else alert("Not Possible. There is pig at Trough.");
 }
 
+// add pig to list + add new row to table 2
 function addPig() {
   let pig = new Pig();
   pigList.push(pig);
@@ -76,11 +81,14 @@ function addPig() {
   cell4.innerHTML = pig.remain;
   cell5.innerHTML = pig.cumulative;
 
-  // farm.renderPig()
+  // render pig event
+  farm.renderPig(pig)
 }
+
 
 function deletePig() {
   let deleteID = document.getElementById("delete-id").value;
+  // check if possible
   if (
     deleteID > maxId ||
     deleteID === "" ||
@@ -99,5 +107,4 @@ function deletePig() {
     
     console.log(pigList);
   }
-  //   renderTable2();
 }

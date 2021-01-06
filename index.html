@@ -10,10 +10,7 @@
 </head>
 <body>
   <div id="app">
-    <div id="farm">
-      <!--
-      --->
-    </div>
+    <div id="farm"></div>
     <div class="table-wrapper">
       <div>
         <table id="table-1">
@@ -47,24 +44,27 @@
         <table id="table-2">
           <tr>
             <th>ID</th>
-            <th>Weight</th>
-            <th>Eaten Today</th>
-            <th>Remain</th>
+            <th>Weight (kg)</th>
+            <th>Eaten Today (g)</th>
+            <th>Remain (g)</th>
             <th>Cumulative</th>
           </tr>
         </table>
       </div>
     </div>
     <div>
-      <span id="day"> </span>
+      <div>
+        <span id="day"> </span>
 
-      <input id="delete-id" type="number" placeholder="Enter ID to delete" />
-      <div class="button-wrapper">
-        <button id="add">Add</button>
-        <button id="weigh">Weigh</button>
-        <button id="next-day">To Next Day</button>
-        <button id="delete">Delete</button>
-        <button id="reset">Reset</button>
+        <input id="delete-id" type="number" placeholder="Enter ID to delete" />
+        <div class="button-wrapper">
+          <button id="add">Add</button>
+          <button id="edit">Edit</button>
+          <button id="delete">Delete</button>
+          <button id="weigh">Weigh</button>
+          <button id="next-day">To Next Day</button>
+          <button id="reset">Reset</button>
+        </div>
       </div>
     </div>
   </div>

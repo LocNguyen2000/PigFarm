@@ -1,4 +1,6 @@
 const table = {};
+
+// for feeding pig  
 const troughList = [
   { trough: "A", amount: 0, pigID: 0 },
   { trough: "B", amount: 0, pigID: 0 },
@@ -7,15 +9,17 @@ const troughList = [
   { trough: "E", amount: 0, pigID: 0 },
 ];
 var days = 1
+// store pigs added
 var pigList = [];
 var maxId = 1; 
 
+
 table.showComponent = () => {
   renderTable1();
-
-  // farm.renderFeedArea()
+  renderTable2()
 };
 
+// render table 1
 function renderTable1() {
   table_1 = document.getElementById("table-1");
   for (let i = 0; i < 5; i++) {
@@ -23,7 +27,7 @@ function renderTable1() {
     table_1.rows[2].cells[i + 1].innerHTML = troughList[i].pigID;
   }
 }
-
+// render table 2
 function renderTable2() {
   let table_2 = document.getElementById("table-2");
   console.log("Length " +pigList.length);

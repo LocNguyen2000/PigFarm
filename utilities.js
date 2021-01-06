@@ -1,4 +1,4 @@
-// others general functions
+// general functions
 
 // choose random non-repeating id for pig => trough
 function randomNumber(min, max) {
