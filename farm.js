@@ -1,12 +1,12 @@
 const farm = {};
 
-// 0: life area - 1: feed area - 2: weight area
+// 0: life area - 1: feed area - 2: weight area  3-sorting
 const matrix = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
-  [0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
-  [0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
-  [0, 0, 0, 2, 2, 1, 1, 1, 1, 0],
+  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
+  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
+  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
+  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
+  [3, 3, 3, 2, 2, 1, 1, 1, 1, 1],
   [0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -57,10 +57,11 @@ farm.renderPig = (pig) => {
     div.style.top = 25 + posY * 50 + "px";
     farm.appendChild(div);
   } else {
+      // chua xu ly random pos thuoc feed area
     console.log("not possible");
   }
 };
 
-farm.updatePigPos() = () => {
+// farm.updatePigPos() = () => {
 
-};
+// };

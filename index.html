@@ -52,20 +52,46 @@
         </table>
       </div>
     </div>
-    <div>
+    <div class="event-wrapper">
       <div>
         <span id="day"> </span>
 
-        <input id="delete-id" type="number" placeholder="Enter ID to delete" />
+        <input
+          id="delete-id"
+          type="number"
+          placeholder="Enter ID to delete"
+        />
         <div class="button-wrapper">
-          <button id="add">Add</button>
-          <button id="edit">Edit</button>
-          <button id="delete">Delete</button>
           <button id="weigh">Weigh</button>
           <button id="next-day">To Next Day</button>
           <button id="reset">Reset</button>
+          <button id="add">Add</button>
+          <button id="delete">Delete</button>
         </div>
       </div>
+      <form class="form-container" id="edit-form">
+        <div class="header">Edit Form</div>
+        <input name = 'id' class="input-wrapper" type="number" placeholder="Enter Pig ID" />
+        <input
+          class="input-wrapper"
+          type="number"
+          placeholder="Enter Weight (kg)"
+          name = 'weight'
+        />
+        <input
+          class="input-wrapper"
+          type="number"
+          placeholder="Enter Remain (g)"
+          name = 'remain'
+        />
+        <input
+          class="input-wrapper"
+          type="number"
+          placeholder="Enter Eaten (g)"
+          name = 'eaten'
+        />
+        <input type = 'submit' class="input-wrapper" value="Edit"> 
+      </form>
     </div>
   </div>
 </body>

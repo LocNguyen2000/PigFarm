@@ -4,6 +4,7 @@ function init() {
   table.showComponent();
   farm.renderFarmArea()
 
+  let editForm = document.getElementById('edit-form')
   let date = document.getElementById("day");
   let addBtn = document.getElementById("add");
   let weighBtn = document.getElementById("weigh");
@@ -17,9 +18,38 @@ function init() {
   nextBtn.onclick = nextDay;
   deleteBtn.onclick = deletePig;
   resetBtn.onclick = reset
+  editForm.onsubmit = edit
 }
 
 // button events
+
+
+function edit(e){
+  e.preventDefault()
+  let p = {
+      id: e.target.id.value,  
+      weight: e.target.weight.value,  
+      remain: e.target.remain.value,  
+      eaten: e.target.eaten.value,  
+  }
+  if(p.weight == '' || p.remain == '' || p.eaten == ''){
+    alert('Must fill in full form')
+  } 
+  else if(existPig(e.target.id.value)){
+    for(let pig of pigList){
+      if(pig.id == p.id){
+        pig.weight = p.weight
+        pig.remain = p.remain
+        pig.eaten = p.eaten 
+        renderTable2()
+        break;
+      }
+    }
+  }
+  else{
+    alert('Not Possible')
+  };
+}
 
 function reset() {
     window.location.reload()
@@ -28,12 +58,10 @@ function reset() {
 function weighPig() {
   if (pigList.length == "0") alert("No Pigs.");
   else {
-    let rand = randomNumber(1, pigList.length);
-    if (pigList[rand - 1].remain != 0 && !existPig(rand)) {
-      pigList[rand - 1].eat();
-    
+    let id = choosePig(1, pigList.length);
+    if (pigList[id - 1].remain != 0 && !inTrough(id)) {
+      pigList[id - 1].eat();
     }
-
   }
 
 }
@@ -49,10 +77,9 @@ function nextDay() {
     // change value of all pigs in list
 
     for (let pig of pigList) {
-      pig.remain = parseFloat(Math.floor((Math.random() * (5 - 1) + 1))).toFixed(1);
-      pig.weight = parseFloat((pig.weight + pig.eaten*0.1).toFixed(1));
+      pig.remain = getRandomInt(10,50) * 100;;
+      pig.weight = parseFloat((pig.weight + pig.eaten * 0.001).toFixed(2));
       pig.eaten = 0;
-
     }
     days += 1;
     date.innerHTML = 'Day ' +  days;
@@ -60,6 +87,7 @@ function nextDay() {
     renderTable2();
   } else alert("Not Possible. There is pig at Trough.");
 }
+
 
 // add pig to list + add new row to table 2
 function addPig() {
@@ -82,7 +110,7 @@ function addPig() {
   cell5.innerHTML = pig.cumulative;
 
   // render pig event
-  farm.renderPig(pig)
+  // farm.renderPig(pig)
 }
 
 

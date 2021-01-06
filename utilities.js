@@ -1,16 +1,21 @@
 // general functions
 
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 // choose random non-repeating id for pig => trough
-function randomNumber(min, max) {
-  let number = Math.floor(Math.random() * (max - 0) + min);
-  console.log("Random number: " + number);
+function choosePig(min, max) {
+  let id = getRandomInt(min, max);
+  console.log("Random number: " + id);
   // check if id of this pig exist in trough
-  if (!existPig(number)) {
-    return number;
+  if (!inTrough(id)) {
+    return id;
   } else if (isFull()) {
     return 0;
   }
-  return randomNumber(min, max);
+  return choosePig(min, max);
 }
 // check if trough is full or all pig is in trough
 function isFull() {
@@ -24,8 +29,18 @@ function isFull() {
   }
   return true;
 }
+
+function existPig(id) {
+    for (let pig of pigList){
+      if(pig.id == id){
+        return true
+      }
+    }
+    return false
+}
+
 // check if exist pig with id in trough
-function existPig(pigID) {
+function inTrough(pigID) {
   for (let t of troughList) {
     if (t.pigID == pigID) {
       console.log("Exist Trough with: " + t.pigID);

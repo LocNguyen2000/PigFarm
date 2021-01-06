@@ -1,12 +1,13 @@
 class Pig {
   constructor() {
-    this.x = Math.floor(Math.random() * (10 - 0) + 0);
-    this.y = Math.floor(Math.random() * (10 - 0) + 0);
+    // random stats
+    this.x = getRandomInt(0,10);
+    this.y = getRandomInt(0,10);
     this.id = maxId;
-    this.weight = 20;
+    this.weight = 20.00;
     this.eaten = 0;
     this.cumulative = 0;
-    this.remain = parseFloat(Math.floor(Math.random() * (5 - 0) + 1)).toFixed(1);
+    this.remain = getRandomInt(10,50) * 100;
     this.eatingSpeed = 5;
   }
   setPos(x_, y_){
@@ -19,9 +20,7 @@ class Pig {
       // check if trough empty
       if (troughList[i].pigID == 0) {
         troughList[i].pigID = this.id;
-        troughList[i].amount = Math.floor(
-          Math.random() * (this.remain - 0) + 1
-        );
+        troughList[i].amount = getRandomInt(1,10)*100;
         this.eaten += troughList[i].amount;
         this.remain -= troughList[i].amount;
         this.cumulative += troughList[i].amount;
