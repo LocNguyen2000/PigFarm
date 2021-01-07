@@ -1,24 +1,33 @@
 const farm = {};
 
 // 0: life area - 1: feed area - 2: weight area  3-sorting
-const matrix = [
-  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
-  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
-  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
-  [3, 3, 3, 3, 1, 1, 1, 1, 1, 1],
-  [3, 3, 3, 2, 2, 1, 1, 1, 1, 1],
-  [0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-];
+const feedCoordinate = {
+  x: [9, 19],
+  y: [0, 8],
+};
+const lifeCoordinate = {
+  x: [0, 19],
+  y: [10, 19],
+};
+const weighCoordinate = {
+  x: [8, 9],
+  y: [9, 10],
+};
+const sortCoordinate = {
+  x: [0, 19],
+  y: [0, 9],
+};
 
+const matrixRow = 20;
+const matrixCell = 20;
+const pigWidth = 6;
+const pigHeight = 10;
+const matrix = getMatrix(matrixCell, matrixRow);
 
-// render area with matrix cell[10][10] 50x50 
+// render area with matrix cell[10][10] 50x50
 farm.renderFarmArea = () => {
   let farm = document.getElementById("farm");
-
+  console.log("hello");
   for (let i = 0; i < matrix.length; i++) {
     let row = document.createElement("div");
     row.classList.add("row");
@@ -27,12 +36,10 @@ farm.renderFarmArea = () => {
       cell.classList.add("cell");
       if (matrix[i][j] == 0) {
         row.appendChild(cell);
-      } 
-      else if (matrix[i][j] == 1) {
+      } else if (matrix[i][j] == 1) {
         cell.classList.add("feed");
         row.appendChild(cell);
-      } 
-      else if (matrix[i][j] == 2) {
+      } else if (matrix[i][j] == 2) {
         cell.classList.add("weigh");
         row.appendChild(cell);
       }
@@ -41,7 +48,6 @@ farm.renderFarmArea = () => {
   }
 };
 
-// UNDONE - render pigs at position 0
 farm.renderPig = (pig) => {
   let farm = document.getElementById("farm");
 
@@ -53,11 +59,11 @@ farm.renderPig = (pig) => {
   if (matrix[posY][posX] == 0) {
     div.classList.add("pig");
     div.style.position = "absolute";
-    div.style.left = 25 + posX * 50 + "px";
-    div.style.top = 25 + posY * 50 + "px";
+    div.style.left = 25 / 2 + posX * 25  + "px";
+    div.style.top = 25 / 2 + posY * 25 + 1 + "px";
+    div.textContent = pig.id
     farm.appendChild(div);
   } else {
-      // chua xu ly random pos thuoc feed area
     console.log("not possible");
   }
 };

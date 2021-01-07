@@ -110,7 +110,7 @@ function addPig() {
   cell5.innerHTML = pig.cumulative;
 
   // render pig event
-  // farm.renderPig(pig)
+  farm.renderPig(pig)
 }
 
 

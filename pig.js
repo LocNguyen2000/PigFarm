@@ -1,8 +1,8 @@
 class Pig {
   constructor() {
     // random stats
-    this.x = getRandomInt(0,10);
-    this.y = getRandomInt(0,10);
+    this.x = getRandomInt(lifeCoordinate.x[0], lifeCoordinate.x[1]);
+    this.y = getRandomInt(lifeCoordinate.y[0], lifeCoordinate.y[1]);
     this.id = maxId;
     this.weight = 20.00;
     this.eaten = 0;
