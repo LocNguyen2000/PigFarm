@@ -129,6 +129,7 @@ function deletePig() {
     pigList.map((pig, index)=>{
       if(pig.id == deleteID){
         pigList.splice(index, 1)
+        farm.deletePig(deleteID)
         table_2.deleteRow(index+1)
       }
     })

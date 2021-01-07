@@ -1,6 +1,26 @@
 // general functions
 
 
+// choose Pig Position without overlapping
+function getPigPos() {
+  let overlap = false;
+  let pigPos ={
+    x: getRandomInt(lifeCoordinate.x[0], lifeCoordinate.x[1]),
+    y: getRandomInt(lifeCoordinate.y[0], lifeCoordinate.y[1])
+  }
+  for (let pig of pigList){
+    if((pigPos.x != pig.x) || (pigPos.y != pig.y)){
+      continue;
+    } 
+    else if((pigPos.x == pig.x) && (pigPos.y== pig.y)){
+      overlap = true;
+      break; 
+    }
+  } 
+  if(overlap == false) return pigPos
+  return getPigPos() 
+
+}
 function getMatrix(width, height) {
   let matrix_ = Array(height).fill().map(()=>Array(width).fill(0))
   for (let i = sortCoordinate.y[0]; i <= sortCoordinate.y[1]; i++) {

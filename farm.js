@@ -1,6 +1,10 @@
 const farm = {};
 
 // 0: life area - 1: feed area - 2: weight area  3-sorting
+const sortCoordinate = {
+  x: [0, 19],
+  y: [0, 9],
+};
 const feedCoordinate = {
   x: [9, 19],
   y: [0, 8],
@@ -11,12 +15,9 @@ const lifeCoordinate = {
 };
 const weighCoordinate = {
   x: [8, 9],
-  y: [9, 10],
+  y: [9, 11],
 };
-const sortCoordinate = {
-  x: [0, 19],
-  y: [0, 9],
-};
+
 
 const matrixRow = 20;
 const matrixCell = 20;
@@ -34,15 +35,14 @@ farm.renderFarmArea = () => {
     for (let j = 0; j < matrix[i].length; j++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
-      if (matrix[i][j] == 0) {
-        row.appendChild(cell);
-      } else if (matrix[i][j] == 1) {
+      if (matrix[i][j] == 1) {
         cell.classList.add("feed");
-        row.appendChild(cell);
       } else if (matrix[i][j] == 2) {
         cell.classList.add("weigh");
-        row.appendChild(cell);
+      } else if (matrix[i][j] == 3) {
+        cell.classList.add('sort')
       }
+      row.appendChild(cell);
     }
     farm.appendChild(row);
   }
@@ -58,16 +58,22 @@ farm.renderPig = (pig) => {
   let div = document.createElement("div");
   if (matrix[posY][posX] == 0) {
     div.classList.add("pig");
+    div.setAttribute("id", pig.id);
     div.style.position = "absolute";
-    div.style.left = 25 / 2 + posX * 25  + "px";
-    div.style.top = 25 / 2 + posY * 25 + 1 + "px";
-    div.textContent = pig.id
+    div.style.left = 25 / 2 + posX * 25 + "px";
+    div.style.top = 25 / 2 + posY * 25 + 2 + "px";
+    div.textContent = pig.id;
     farm.appendChild(div);
   } else {
     console.log("not possible");
   }
 };
 
-// farm.updatePigPos() = () => {
+farm.deletePig = (pigId) => {
+  let div = document.getElementById(pigId);
+  div.remove();
+};
+
+// farm.updatePig() = () => {
 
 // };

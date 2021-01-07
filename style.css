@@ -17,7 +17,7 @@ body {
   height: 500px;
   min-width: 500px;
   background: url(./pigfarm.png) no-repeat center;
-  border: 18px solid #a66930;
+  border: 14px solid #a66930;
 }
 .row .cell {
   display: inline-block;
