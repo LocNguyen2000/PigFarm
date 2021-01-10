@@ -15,12 +15,12 @@ var maxId = 1;
 
 
 table.showComponent = () => {
-  renderTable1();
-  renderTable2()
+  table.renderTable1();
+  table.renderTable2()
 };
 
 // render table 1
-function renderTable1() {
+table.renderTable1 = () => {
   table_1 = document.getElementById("table-1");
   for (let i = 0; i < 5; i++) {
     table_1.rows[1].cells[i + 1].innerHTML = troughList[i].amount;
@@ -28,7 +28,7 @@ function renderTable1() {
   }
 }
 // render table 2
-function renderTable2() {
+table.renderTable2 = () => {
   let table_2 = document.getElementById("table-2");
   console.log("Length " +pigList.length);
   for (let i = 1; i <= pigList.length; i++) {

@@ -27,13 +27,13 @@ body {
 }
 
 .pig {
-  background: tomato;
-  width: 12px;
-  height: 28px;
+  background: rgba(199, 133, 176, 0.9);
+  width: 14px;
+  height: 30px;
   border-radius: 8px;
   display: flex;
   color: white;
-  font-size: 12px;
+  font-size: 10px;
   align-items: center;
   justify-content: center;
 }

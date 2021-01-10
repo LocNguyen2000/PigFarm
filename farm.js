@@ -18,11 +18,10 @@ const weighCoordinate = {
   y: [9, 11],
 };
 
-
 const matrixRow = 20;
 const matrixCell = 20;
-const pigWidth = 6;
-const pigHeight = 10;
+const cellWidth = 25;
+const cellHeight = 25;
 const matrix = getMatrix(matrixCell, matrixRow);
 
 // render area with matrix cell[10][10] 50x50
@@ -40,12 +39,21 @@ farm.renderFarmArea = () => {
       } else if (matrix[i][j] == 2) {
         cell.classList.add("weigh");
       } else if (matrix[i][j] == 3) {
-        cell.classList.add('sort')
+        cell.classList.add("sort");
       }
       row.appendChild(cell);
     }
     farm.appendChild(row);
   }
+};
+farm.transformPos = (x, y) => {
+  let point = {
+    x: 0,
+    y: 0,
+  };
+  point.x = cellWidth / 2 + x * cellWidth;
+  point.y = cellHeight / 2 + y * cellHeight;
+  return point;
 };
 
 farm.renderPig = (pig) => {
@@ -53,8 +61,8 @@ farm.renderPig = (pig) => {
 
   let posX = pig.x;
   let posY = pig.y;
-
   console.log("Random row & cell: " + posX + " " + posY);
+
   let div = document.createElement("div");
   if (matrix[posY][posX] == 0) {
     div.classList.add("pig");
@@ -74,6 +82,31 @@ farm.deletePig = (pigId) => {
   div.remove();
 };
 
-// farm.updatePig() = () => {
+farm.weighPig = (pigId) => {
+  let pig = getPig(pigId)
 
-// };
+  let div = document.getElementById(pigId);
+  let x = getRandomInt(feedCoordinate.x[0], feedCoordinate.x[1]);
+  let y = getRandomInt(feedCoordinate.y[0], feedCoordinate.y[1]);
+  let point = farm.transformPos(x, y);
+  div.style.left = point.x + "px";
+  div.style.top = point.y + "px";
+
+  setTimeout(() => {
+    x = getRandomInt(weighCoordinate.x[0], weighCoordinate.x[1]);
+    y = getRandomInt(weighCoordinate.y[0], weighCoordinate.y[1]);
+    point = farm.transformPos(x, y);
+    div.style.left = point.x + "px";
+    div.style.top = point.y + "px";
+    setTimeout(() => {
+      x = pig.x
+      y = pig.y
+      point = farm.transformPos(x, y);
+      div.style.left = point.x + "px";
+      div.style.top = point.y + "px";
+    }, 2000)
+  }, 3000);
+
+ 
+  
+};

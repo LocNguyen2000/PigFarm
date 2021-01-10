@@ -15,6 +15,9 @@ class Pig {
     this.x = x_
     this.y = y_
   }
+  move(){
+    
+  }
   // weigh event => pig eats
   eat() {
     for (let i = 0; i < troughList.length; i++) {
@@ -29,8 +32,8 @@ class Pig {
       }
     }
     console.log("eat");
-
-    renderTable1();
+    farm.weighPig(this.id)
+    table.renderTable1();
     // wait for pig eats => change table
     setTimeout(() => {
       for (let i = 0; i < troughList.length; i++) {
@@ -39,8 +42,8 @@ class Pig {
           troughList[i].amount = 0;
         }
       }
-      renderTable1();
-      renderTable2();
+      table.renderTable1();
+      table.renderTable2();
     }, this.eatingSpeed * 1000);
   }
 }

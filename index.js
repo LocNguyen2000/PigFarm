@@ -41,7 +41,7 @@ function edit(e){
         pig.weight = p.weight
         pig.remain = p.remain
         pig.eaten = p.eaten 
-        renderTable2()
+        table.renderTable2()
         break;
       }
     }
@@ -84,7 +84,7 @@ function nextDay() {
     days += 1;
     date.innerHTML = 'Day ' +  days;
 
-    renderTable2();
+    table.renderTable2();
   } else alert("Not Possible. There is pig at Trough.");
 }
 

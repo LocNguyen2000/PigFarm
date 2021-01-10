@@ -1,6 +1,15 @@
 // general functions
 
 
+function getPig(id) {
+  for (let pig of pigList){
+    if(pig.id == id){
+      return pig
+    }
+  }
+  alert('Not exist')
+}
+
 // choose Pig Position without overlapping
 function getPigPos() {
   let overlap = false;
